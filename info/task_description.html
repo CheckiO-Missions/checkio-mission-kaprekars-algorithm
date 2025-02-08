@@ -1,6 +1,6 @@
 <!-- Describe task in general -->
-
-<p>
+<!-- <img src="{{MEDIA_CONVERT}}title.png" class="title_img" /> -->
+<p style="text-align: justify;">
     Sum two passed ints
 </p>
 
@@ -10,43 +10,33 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments. Both are ints.
+    <strong>Input:</strong> Two arguments. Both are ints.
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <strong>Output:</strong> Int. 
 </p>
 
 
-<!-- Give some usage examples -->
-<div class="for_info_only">
-    <p>
-        <strong>Example:</strong>
-    </p>
+<p>
+    <strong>Examples:</strong>
+</p>
 
-{% if is_js %}
-<pre class="brush: javascript">sumTwo(3, 2) == 5
-sumTwo(5, 7) == 12
-</pre>
-{% else %}
-<pre class="brush: python">sum_two(3, 2) == 5
-sum_two(5, 7) == 12
-</pre>
-{% endif %}
-</div>
-
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->
-<p class="for_info_only">
+<!-- <p class="for_info_only">
 
-    <strong>How it’s used: </strong>
+    <strong>How it’s used:</strong>
     <i>(math is used everywhere)</i>
-</p>
+</p> -->
 
 <!-- Here you can explain some constraints for input-->
 <!-- The section is optional -->
-<p>
-    <strong>Precondition:</strong>
-    <i>both given ints should be between -1000 and 1000</i>
-</p>
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
