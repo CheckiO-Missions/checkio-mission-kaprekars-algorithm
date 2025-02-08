@@ -1,12 +1,16 @@
-def sum_two(a: int, b: int) -> int:
+def kaprekar_algorithm(n: int) -> tuple[int, int, bool | None]:
     # your code here
     return 0
 
-
-print("Example:")
-print(sum_two(3, 2))
-
-# These "asserts" are used for self-checking and not for an auto-testing
-assert sum_two(3, 2) == 5
-assert sum_two(5, 7) == 12
-print("Coding complete? Click 'Check' to earn cool rewards!")
+if __name__ == "__main__":
+    print("Example:")
+    print(kaprekar_algorithm(5914))
+    
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert tuple(kaprekar_algorithm(5914)) == (6174, 3, True)
+    assert tuple(kaprekar_algorithm(6174)) == (6174, 0, True)
+    assert tuple(kaprekar_algorithm(48)) == (27, 2, False)
+    assert tuple(kaprekar_algorithm(27)) == (27, 0, False)
+    assert tuple(kaprekar_algorithm(111)) == (0, 1, None)
+    assert tuple(kaprekar_algorithm(9)) == (0, 1, None)
+    print("Coding complete? Click 'Check' to earn cool rewards!")

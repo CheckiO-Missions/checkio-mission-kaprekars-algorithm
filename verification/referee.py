@@ -11,13 +11,9 @@ api.add_listener(
         tests=TESTS,
         # checker=to_list,
         function_name={
-            "python": "sum_two",
-            "js": "sumTwo"
+            "python": "kaprekar_algorithm"
         },
         cover_code={
-            'python-3': {},
-            'js-node': {
-                # "dateForZeros": True,
-            }
+            'python-3': {}
         }
     ).on_ready)
