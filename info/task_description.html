@@ -1,19 +1,19 @@
 <p>Let's take a random positive integer (e.g. 5914) and apply the <a
         href="https://en.wikipedia.org/wiki/Kaprekar%27s_routine" target="_blank">Kaprekar's routine</a> to it: At
-    first, you create to new integers by ordering the digits in either descending (9541) or ascending order (1459). Then
-    you subtract the smaller from the greater number (9541 &minus; 1459 = 8082) and repeat this whole procedure for the
+    first, you create two new integers by ordering the digits in descending (9541) and ascending order (1459). Then
+    you subtract the smaller from the greater number (9541 &minus; 1459 = 8082). Repeat this procedure for the
     new number 8082.</p>
-<p>Applying the Kaprekar's algorithm to any positive integer can result in two cases:</p>
+<p>Applying the Kaprekar's algorithm to any positive integer can result in three cases:</p>
 <ol type="A">
     <li><strong>A constant integer is reached</strong><br>
         For 5914, the number sequence is: 5914, 8082, 8532, 6174, 6174, 6174, &hellip;<br>
         Thus, 6174 is the Kaprekar's constant corresponding to 5914.</li>
     <li><strong>A cycle of integers is reached</strong><br>
         Example: 48, 36, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, <strong style="color:#E5960F;">27,
-            45, 09, 81, 63</strong>, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong><br>
+            45, 09, 81, 63</strong>, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, &hellip;<br>
         (Two different colors are used to highlight the Kaprekar's circle 27, 45, 09, 81, 63)</li>
     <li><strong>Zero is reached</strong><br>
-        Even though technically, zero is also a constant (e.g. 7, 0, 0, 0, &hellip;), mathematicians don't consider zero
+        Even though technically zero is also a constant (e.g. 7, 0, 0, 0, &hellip;), mathematicians don't consider zero
         to be a Kaprekar constant.</li>
 </ol>
 <p>You might have noticed, that leading zeros can play an important role: in cycle <strong style="color:#3B6AA9;">27,
@@ -21,21 +21,21 @@
     filling up with leading zeros to the total number of digits of the input integer.</p>
 
 <p>
-    <strong>Input:</strong> A positive integer n (0 &le; n &le; 999.999)
+    <strong>Input:</strong> A positive integer <i>n</i> (0 &le; <i>n</i> &le; 999.999)
 </p>
 
 <p>
-    <strong>Output:</strong> Three values:
+    <strong>Output:</strong> A tuple consisting of three values:
 </p>
 <ol>
-    <li>An integer which should be either the Kaprekar's constant to n, or (in case of a cycle) the first number of a
-        Kaprekar's cycle that is entered from n.<br>
+    <li>An integer which should be either the Kaprekar's constant to <i>n</i>, or (in case of a cycle) the first number of a
+        Kaprekar's cycle that is entered from <i>n</i>.<br>
         Note for clarification: Even though both integers 48 and 92 lead to the same circle (i.e. 27, 45, 09, 81, 63),
-        both integers enter this circle at different numbers. Thus, your function should return 27 (for n = 48) and 63
-        for n = 92.</li>
-    <li>The number of Kaprekar operations that must be applied to n until a constant or a cycle is reached. If n is
-        already a Kaprekar constant (or a number from a Kaprekar cycle), this should be count as zero operations.</li>
-    <li>A Boolean or None stating, which case have occurred for n: True for case A, False for case B, None for case C.
+        both integers enter this circle at different numbers. Thus, your function should return 27 (for <i>n</i> = 48) and 63
+        for <i>n</i> = 92.</li>
+    <li>The number of Kaprekar operations that must be applied to <i>n</i> until a constant or a cycle is reached. If <i>n</i> is
+        already a Kaprekar constant (or a number from a Kaprekar cycle), this should be counted as zero operations.</li>
+    <li>A Boolean or None stating, which case have occurred for <i>n</i>: True for case A, False for case B, None for case C.
     </li>
 </ol>
 
