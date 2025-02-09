@@ -13,4 +13,4 @@ if __name__ == "__main__":
     assert kaprekar_algorithm(27) == (27, 0, False)
     assert kaprekar_algorithm(111) == (0, 1, None)
     assert kaprekar_algorithm(9) == (0, 1, None)
-    print("Coding complete? Click 'Check' to earn cool rewards!")
+    print("The mission is done! Click 'Check Solution' to earn rewards!")
