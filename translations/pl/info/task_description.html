@@ -1,0 +1,55 @@
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+
+<p>Weźmy losową dodatnią liczbę całkowitą (np. 5914) i zastosujmy do niej <a
+        href="https://en.wikipedia.org/wiki/Kaprekar%27s_routine" target="_blank">Kaprekar's routine</a>: Najpierw
+    najpierw tworzy Pan dwie nowe liczby całkowite, porządkując cyfry w kolejności malejącej (9541) i rosnącej (1459). Następnie
+    proszę odjąć mniejszą liczbę od większej (9541 - 1459 = 8082). Proszę powtórzyć tę procedurę dla
+    nowej liczby 8082.</p>
+<p>Zastosowanie algorytmu Kaprekara do dowolnej dodatniej liczby całkowitej może skutkować trzema przypadkami:</p>
+<ol type="A">
+    <li><strong>Osiągnięta zostaje stała liczba całkowita</strong><br>
+        Dla 5914, sekwencja liczb wynosi: 5914, 8082, 8532, 6174, 6174, 6174, ...<br>
+        Zatem 6174 jest stałą Kaprekara odpowiadającą 5914.</li>
+    <li><strong>Osiągnięto cykl liczb całkowitych</strong><br>
+        Przykład: 48, 36, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, <strong style="color:#E5960F;">27,
+            45</strong> <strong style="color:#3B6AA9;">, 09</strong> <strong style="color:#E5960F;">, 81, 63</strong>, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, ...<br>
+        (Dwa różne kolory są używane do podświetlenia okręgu Kaprekara 27, 45, 09, 81, 63)</li>
+    <li><strong>Osiągnięto zero</strong><br>
+        Chociaż technicznie zero jest również stałą (np. 7, 0, 0, 0, ...), matematycy nie uważają zera
+        za stałą Kaprekara.</li>
+</ol>
+<p>Być może zauważyli Państwo, że wiodące zera mogą odgrywać ważną rolę: w cyklu <strong style="color:#3B6AA9;">27,
+        45, 09, 81, 63</strong>, dziewiątka musi być traktowana jako 09, a nie po prostu 9. Dla każdego wyniku pośredniego proszę rozważyć
+    uzupełnić zerami wiodącymi do całkowitej liczby cyfr wejściowej liczby całkowitej.</p>
+
+<p>
+   <strong>Wejście:</strong> Dodatnia liczba całkowita <i>n</i> (0 &le; <i>n</i> &le; 999,999)
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> Krotka składająca się z trzech wartości:
+</p>
+<ol>
+    <li>Liczba całkowita, która powinna być albo stałą Kaprekara dla <i>n</i>, albo (w przypadku cyklu) pierwszym numerem cyklu Kaprekara, który jest wprowadzany od n
+        Kaprekara, który jest wprowadzany od <i>n</i>.<br>
+        Uwaga dla wyjaśnienia: Nawet jeśli obie liczby całkowite 48 i 92 prowadzą do tego samego okręgu (tj. 27, 45, 09, 81, 63),
+        obie liczby całkowite wchodzą do tego okręgu pod różnymi numerami. Zatem Pana funkcja powinna zwrócić 27 (dla <i>n</i> = 48) i 63
+        dla <i>n</i> = 92.</li>
+    <li>Liczba operacji Kaprekara, które muszą być zastosowane do <i>n</i>, aż do osiągnięcia stałej lub cyklu. Jeśli <i>n</i> jest
+        już stałą Kaprekara (lub liczbą z cyklu Kaprekara), powinno to być liczone jako zero operacji.</li>
+    <li>Boolean lub None określające, który przypadek wystąpił dla <i>n</i>: True dla przypadku A, False dla przypadku B, None dla przypadku C.
+    </li>
+</ol>
+
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">assert kaprekar_algorithm(5914) == (6174, 3, True)
+assert kaprekar_algorithm(6174) == (6174, 0, True)
+assert kaprekar_algorithm(48) == (27, 2, False)
+assert kaprekar_algorithm(27) == (27, 0, False)
+assert kaprekar_algorithm(45) == (45, 0, False)
+assert kaprekar_algorithm(111) == (0, 1, None)
+assert kaprekar_algorithm(9) == (0, 1, None)</pre>
