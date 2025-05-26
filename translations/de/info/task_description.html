@@ -1,0 +1,55 @@
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+
+<p>Nehmen wir eine zufällige positive ganze Zahl (z.B. 5914) und wenden wir die <a
+        href="https://en.wikipedia.org/wiki/Kaprekar%27s_routine" target="_blank">Kaprekar's routine</a> darauf an: Unter
+    erstellen Sie zunächst zwei neue Ganzzahlen, indem Sie die Ziffern in absteigender (9541) und aufsteigender Reihenfolge (1459) anordnen. Dann
+    subtrahieren Sie die kleinere von der größeren Zahl (9541 - 1459 = 8082). Wiederholen Sie diesen Vorgang für die
+    neue Zahl 8082.</p>
+<p>Die Anwendung des Algorithmus von Kaprekar auf eine beliebige positive ganze Zahl kann zu drei Fällen führen:</p>
+<ol type="A">
+    <li><strong>Eine konstante ganze Zahl wird erreicht</strong><br>
+        Für 5914 lautet die Zahlenfolge: 5914, 8082, 8532, 6174, 6174, 6174, ...<br>
+        6174 ist also die Kaprekar-Konstante, die der Zahl 5914 entspricht.</li>
+    <li><strong>Ein Zyklus von ganzen Zahlen ist erreicht</strong><br>
+        Beispiel: 48, 36, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, <strong style="color:#E5960F;">27,
+            45, 09, 81, 63</strong>, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, ...<br>
+        (Zwei verschiedene Farben werden verwendet, um den Kaprekar-Kreis 27, 45, 09, 81, 63 hervorzuheben)</li>
+    <li><strong>Null wird erreicht</strong><br>
+        Obwohl die Null technisch gesehen auch eine Konstante ist (z.B. 7, 0, 0, 0, ...), betrachten Mathematiker die Null nicht
+        nicht als eine Kaprekar-Konstante.</li>
+</ol>
+<p>Sie haben vielleicht bemerkt, dass führende Nullen eine wichtige Rolle spielen können: im Zyklus <strong style="color:#3B6AA9;">27,
+        45, 09, 81, 63</strong>, muss die Neun als 09 behandelt werden, nicht nur als 9. Betrachten Sie für jedes Zwischenergebnis
+    mit führenden Nullen auf die Gesamtzahl der Ziffern der eingegebenen ganzen Zahl auffüllen.</p>
+
+<p>
+   <strong>Eingabe:</strong> Eine positive ganze Zahl <i>n</i> (0 &le; <i>n</i> &le; 999.999)
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Ein Tupel bestehend aus drei Werten:
+</p>
+<ol>
+    <li>Eine ganze Zahl, die entweder die Kaprekar-Konstante zu <i>n</i> sein sollte oder (im Falle eines Zyklus) die erste Zahl eines
+        Kaprekar-Zyklus, die ab <i>n</i> eingegeben wird.<br>
+        Hinweis zur Klarstellung: Auch wenn die beiden ganzen Zahlen 48 und 92 zum selben Kreis führen (d.h. 27, 45, 09, 81, 63),
+        treten beide Zahlen bei unterschiedlichen Zahlen in diesen Kreis ein. Daher sollte Ihre Funktion 27 (für <i>n</i> = 48) und 63
+        für <i>n</i> = 92.</li>
+    <li>Die Anzahl der Kaprekar-Operationen, die auf <i>n</i> angewendet werden müssen, bis eine Konstante oder ein Zyklus erreicht ist. Wenn <i>n</i> 
+        bereits eine Kaprekar-Konstante (oder eine Zahl aus einem Kaprekar-Zyklus) ist, sollte dies als null Operationen gezählt werden.</li>
+    <li>Ein Boolescher Wert oder None, der angibt, welcher Fall für <i>n</i> eingetreten ist: True für Fall A, False für Fall B, None für Fall C.
+    </li>
+</ol>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">assert kaprekar_algorithm(5914) == (6174, 3, True)
+assert kaprekar_algorithm(6174) == (6174, 0, True)
+assert kaprekar_algorithm(48) == (27, 2, False)
+assert kaprekar_algorithm(27) == (27, 0, False)
+assert kaprekar_algorithm(45) == (45, 0, False)
+assert kaprekar_algorithm(111) == (0, 1, None)
+assert kaprekar_algorithm(9) == (0, 1, None)</pre>
