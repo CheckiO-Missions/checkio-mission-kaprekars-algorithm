@@ -1,0 +1,55 @@
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+
+<p>Prenons un nombre entier positif aléatoire (par exemple 5914) et appliquons-lui la méthode <a
+        href="https://en.wikipedia.org/wiki/Kaprekar%27s_routine" target="_blank">Kaprekar's routine</a>: Dans un premier temps, vous créez deux nouveaux entiers
+    d'abord, vous créez deux nouveaux entiers en classant les chiffres par ordre décroissant (9541) et croissant (1459). Ensuite
+    vous soustrayez le plus petit du plus grand (9541 - 1459 = 8082). Répétez cette procédure pour le
+    nouveau nombre 8082.</p>
+<p>L'application de l'algorithme de Kaprekar à n'importe quel nombre entier positif peut donner lieu à trois cas de figure:</p>
+<ol type="A">
+    <li><strong>Un nombre entier constant est atteint</strong><br>
+        Pour 5914, la séquence de nombres est la suivante 5914, 8082, 8532, 6174, 6174, 6174, ...<br>
+        Ainsi, 6174 est la constante de Kaprekar correspondant à 5914.</li>
+    <li><strong>Un cycle d'entiers est atteint</strong><br>
+        Exemple: 48, 36, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, <strong style="color:#E5960F;">27,
+            45, 09, 81, 63</strong>, <strong style="color:#3B6AA9;">27, 45, 09, 81, 63</strong>, ...<br>
+        (Deux couleurs différentes sont utilisées pour mettre en évidence le cercle de Kaprekar 27, 45, 09, 81, 63)</li>
+    <li><strong>Le zéro est atteint</strong><br>
+        Même si techniquement le zéro est aussi une constante (par exemple 7, 0, 0, 0, ...), les mathématiciens ne considèrent pas le zéro comme une constante de Kaprekar
+        comme une constante de Kaprekar.</li>
+</ol>
+<p>Vous avez peut-être remarqué que les zéros initiaux peuvent jouer un rôle important: dans le cycle <strong style="color:#3B6AA9;">27,
+        45, 09, 81, 63</strong>, le neuf doit être traité comme 09, et pas seulement comme 9. Pour tout résultat intermédiaire, envisagez de
+    de remplir de zéros en tête le nombre total de chiffres de l'entier d'entrée.</p>
+
+<p>
+   <strong>Entrée:</strong> Un entier positif <i>n</i> (0 &le; <i>n</i> &le; 999.999)
+</p>
+
+<p>
+   <strong>Sortie:</strong> Un tuple composé de trois valeurs:
+</p>
+<ol>
+    <li>Un entier qui doit être soit la constante de Kaprekar à <i>n</i>, soit (dans le cas d'un cycle) le premier numéro d'un cycle de Kaprekar entré à partir de n <i>
+</i>       Cycle de Kaprekar qui est entré à partir de <i>n.</i><br>
+        Note de clarification: Même si les deux nombres entiers 48 et 92 mènent au même cercle (c'est-à-dire 27, 45, 09, 81, 63),
+        les deux entiers entrent dans ce cercle à des numéros différents. Ainsi, votre fonction devrait retourner 27 (pour <i>n</i> = 48) et 63
+        pour <i>n</i> = 92.</li>
+    <li>Le nombre d'opérations de Kaprekar qui doivent être appliquées à <i>n</i> jusqu'à ce qu'une constante ou un cycle soit atteint. Si <i>n</i> est
+        déjà une constante Kaprekar (ou un nombre d'un cycle Kaprekar), cela doit être compté comme zéro opération.</li>
+    <li>Un booléen ou None indiquant quel cas s'est produit pour <i>n:</i> True pour le cas A, False pour le cas B, None pour le cas C.
+    </li>
+</ol>
+
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">assert kaprekar_algorithm(5914) == (6174, 3, True)
+assert kaprekar_algorithm(6174) == (6174, 0, True)
+assert kaprekar_algorithm(48) == (27, 2, False)
+assert kaprekar_algorithm(27) == (27, 0, False)
+assert kaprekar_algorithm(45) == (45, 0, False)
+assert kaprekar_algorithm(111) == (0, 1, None)
+assert kaprekar_algorithm(9) == (0, 1, None)</pre>
