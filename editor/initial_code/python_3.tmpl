@@ -8,18 +8,17 @@ def kaprekar_algorithm(n: int) -> tuple[int, int, bool | None]:
 {% endblock start %}
 
 {% block example %}
-if __name__ == "__main__":
-    print('Example:')
-    print(kaprekar_algorithm(5914))
+print('Example:')
+print(kaprekar_algorithm(5914))
 {% endblock %}
 
-    # These "asserts" are used for self-checking
-    {% block tests %}
+# These "asserts" are used for self-checking
+{% block tests %}
 {% for t in tests %}
-    assert {% block call %}kaprekar_algorithm({{t.input|p_args}})
+assert {% block call %}kaprekar_algorithm({{t.input|p_args}})
 {% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}
 {% endblock %}
 
 {% block final %}
-    print("The mission is done! Click 'Check Solution' to earn rewards!")
+print("The mission is done! Click 'Check Solution' to earn rewards!")
 {% endblock final %}
