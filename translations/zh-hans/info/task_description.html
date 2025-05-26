@@ -1,0 +1,55 @@
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+
+<p>让我们随机取一个正整数（如 5914），然后应用<a
+        href="https://en.wikipedia.org/wiki/Kaprekar%27s_routine" target="_blank">Kaprekar's routine</a> ：首先
+    首先，按数字降序（9541）和升序（1459）创建两个新整数。然后
+    用较大的数字减去较小的数字（9541 - 1459 = 8082）。对
+    新数字 8082。</p>
+<p>对任何正整数应用卡普雷卡尔算法都会产生三种情况：</p>
+<ol type="A">
+    <li><strong>达到恒整数</strong><br>
+        对于 5914，数字序列是5914, 8082, 8532, 6174, 6174, 6174, ...<br>
+        因此，6174 是与 5914 相对应的卡普雷卡尔常数。</li>
+    <li><strong>达到整数循环</strong><br>
+        例如48, 36,<strong style="color:#3B6AA9;">27, 45, 09, 81, 63, 27</strong> <strong style="color:#E5960F;">,</strong>
+           <strong style="color:#E5960F;">45, 09, 81, 63,</strong> <strong style="color:#3B6AA9;">27, 45, 09, 81, 63,</strong>...<br>
+        (用两种不同颜色突出显示卡普雷卡尔圆 27、45、09、81、63）</li>
+    <li><strong>达到零点</strong><br>
+        尽管从技术上讲，零也是一个常数（如 7、0、0、0、......），但数学家并不认为零是一个卡普雷卡尔常数。
+        是卡普雷卡尔常数。</li>
+</ol>
+<p>你可能已经注意到了，前导零可以发挥重要作用：在循环<strong style="color:#3B6AA9;">27</strong> 中，前导零是一个常数（例如，7<strong style="color:#3B6AA9;">、</strong>0<strong style="color:#3B6AA9;">、</strong>0<strong style="color:#3B6AA9;">、</strong>0、<strong style="color:#3B6AA9;">.</strong>.<strong style="color:#3B6AA9;">.）、
+        45，09，81，63</strong> 的循环中，9 必须被视为 09，而不仅仅是 9。对于任何中间结果，请考虑
+    将输入整数的总位数填满前导零。</p>
+
+<p>
+   <strong>输入</strong>正整数<i>n</i>(0 &le;<i>n &le;</i>999.999)
+</p>
+
+<p>
+   <strong>输出：</strong>由三个值组成的元组
+</p>
+<ol>
+    <li>一个整数，它应该是<i>n</i> 的卡普雷卡尔常数，或者（在循环的情况下）从<i>n</i> 开始输入的卡普雷卡尔循环的第一个数字。
+        的第一个数字。<br>
+        说明尽管 48 和 92 这两个整数通向同一个圆（即 27、45、09、81、63），但这两个整数进入这个圆的位置不同、
+        这两个整数进入这个循环的数字是不同的。因此，您的函数应返回 27（<i>n</i>= 48）和 63（<i>n</i>= 92）。
+        对于<i>n</i>= 92。</li>
+    <li>必须对<i>n</i>进行多少次 Kaprekar 运算，直到达到一个常数或循环为止。如果<i>n</i>
+        已经是一个 Kaprekar 常量（或 Kaprekar 循环中的一个数字），则操作次数为零。</li>
+    <li>布尔值或 None 表示<i>n</i> 发生了哪种情况：情况 A 为 True，情况 B 为 False，情况 C 为 None。
+    </li>
+</ol>
+
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">assert kaprekar_algorithm(5914) == (6174, 3, True)
+assert kaprekar_algorithm(6174) == (6174, 0, True)
+assert kaprekar_algorithm(48) == (27, 2, False)
+assert kaprekar_algorithm(27) == (27, 0, False)
+assert kaprekar_algorithm(45) == (45, 0, False)
+assert kaprekar_algorithm(111) == (0, 1, None)
+assert kaprekar_algorithm(9) == (0, 1, None)</pre>
